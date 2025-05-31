@@ -1,11 +1,10 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
-import subprocess # For running curl
+import subprocess 
 
 # --- Configuration ---
-HOST_NAME = '0.0.0.0'  # Listen on all available interfaces
+HOST_NAME = '0.0.0.0'  
 PORT_NUMBER = 1234
-# LOCATION_TO_SERVE is no longer needed here as it will be fetched dynamically
 
 class MyServer(BaseHTTPRequestHandler):
     def do_GET(self):
@@ -57,15 +56,6 @@ class MyServer(BaseHTTPRequestHandler):
         
         print(f"Received POST data:\n{data_str}")
 
-        # For Lab 7.2 and 7.3, this is where you'd display/process
-        # the temperature and humidity from the ESP32
-        
-        # Example parsing (uncomment and adapt if needed):
-        # from urllib.parse import parse_qs
-        # parsed_data = parse_qs(data_str)
-        # temperature = parsed_data.get('temperature', [None])[0]
-        # humidity = parsed_data.get('humidity', [None])[0]
-        # print(f"Parsed Temperature: {temperature}, Humidity: {humidity}")
 
         self.send_response(200)
         self.send_header('Content-type', 'text/plain')
